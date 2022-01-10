@@ -12,7 +12,7 @@ public class Main {
         Random rand = new Random();
 
         // Game variables
-        String[] enemies = {"Skeleton", "Zombie", "Org", "Warrior", "Assassin"};
+        String[] enemies = {"Dracula", "Zombie", "Org", "Warrior", "Assassin"};
         int maxEnemyHealth = 100;
         int enemyAttackDamage = 25;
 
@@ -30,12 +30,17 @@ public class Main {
         GAME:
         while (running) {
             System.out.println("--------------------------------------------------");
-
             int enemyHealth = rand.nextInt(maxEnemyHealth);
-            String enemy = enemies[rand.nextInt(enemies.length) - 1];
-            System.out.println("\t# Your enemy is " + enemy + ". #\n");
-
-            label:
+            String enemy = enemies[rand.nextInt(enemies.length)];
+            System.out.println("\t# Your enemy is " + enemy + ". #");
+            switch (enemy) {
+                case ("Zombie") -> System.out.println("\t   ( ¬º-°)¬");
+                case ("Dracula") -> System.out.println("\t   (㇏(•̀ᵥᵥ•́)ノ)");
+                case ("Org") -> System.out.println("\t   ¶(⁄•˅̭•∖)⁋");
+                case ("Assassin") -> System.out.println("\t   ╰༼.◕ヮ◕.༽つ¤=[]————");
+                case ("Warrior") -> System.out.println("\t   ᕦ[ •́ ﹏ •̀ ]⊃¤=[]::::::::>");
+            }
+            System.out.println("\n");
             while (enemyHealth > 0) {
                 System.out.println("\tYour HP: " + health);
                 System.out.println("\t" + enemy + "'s HP: " + enemyHealth);
@@ -58,7 +63,7 @@ public class Main {
 
                         if (health < 1) {
                             System.out.println("\t> You are too weak to continue");
-                            break label;
+                            break;
                         }
                         break;
                     case "2":
